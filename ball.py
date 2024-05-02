@@ -25,4 +25,7 @@ class Ball(Sprite):
             self.pos,
             self.radius)
         
-    
+    def update(self):
+        """updates the position of the ball"""
+        #self.pos = (x, y) so we add the x_speed and y_speed
+        self.pos = (self.pos[0] + self.x_speed, self.pos[1] + self.y_speed)

@@ -12,5 +12,7 @@ class Brick(Sprite):
         self.rect = pygame.Rect(0,0, self.width, self.height)
         self.rect.topleft = (x,y)
 
+
     def draw(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
+        

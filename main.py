@@ -27,33 +27,40 @@ class Game:
     def run(self):
         """Runs the main loop"""
         while self.running:
+            self._check_events()
+            self._update_screen()
+            self._draw_screen()
 
-            """Checking for events"""
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
 
-                if event.type == pygame.KEYDOWN:
-                    """All keydown events"""
-                    if event.key == pygame.K_RIGHT:
-                        self.paddle.moving_right = True
+    def _check_events(self):
+        """Checking for events"""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
 
-                if event.type == pygame.KEYUP:
-                    """All keyup events"""
-                    if event.key == pygame.K_RIGHT:
-                        self.paddle.moving_right = False
+            if event.type == pygame.KEYDOWN:
+                """All keydown events"""
+                if event.key == pygame.K_RIGHT:
+                    self.paddle.moving_right = True
 
-            """Update"""
-            self.paddle.update()
-            #self.ball.update()
+            if event.type == pygame.KEYUP:
+                """All keyup events"""
+                if event.key == pygame.K_RIGHT:
+                    self.paddle.moving_right = False
 
-            """Draw Screen"""
-            self.screen.fill(self.settings.bg_color)
-            self.brick.draw()
-            self.paddle.draw()
-            self.ball.draw()
-            
-            pygame.display.flip()
+    def _update_screen(self):
+        """Update"""
+        self.paddle.update()
+        self.ball.update()
+
+    def _draw_screen(self):
+        """Draw Screen"""
+        self.screen.fill(self.settings.bg_color)
+        self.brick.draw()
+        self.paddle.draw()
+        self.ball.draw()
+        
+        pygame.display.flip()
 
 game = Game()
 game.run()
