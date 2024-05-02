@@ -11,3 +11,7 @@ class Settings:
         #Paddle Settings
         self.paddle_width = 200
         self.paddle_height = 30
+
+        #Ball settings
+        self.ball_color = (0,255,0)
+        self.ball_radius = 20
